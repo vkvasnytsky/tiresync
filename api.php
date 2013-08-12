@@ -23,22 +23,22 @@
  */
 
 /**
- * @const string API_BASE TireSYNC REST API URL among free access key and base64
+ * @const string API_BASE_URI TireSYNC REST API URI along with free access key and base64
  * encoded localhost as a domain name
  */
-define('API_BASE', 'http://api.tiresync.com/v1/oe/%s/1111-1111-1111-1111/bG9jYWxob3N0/');
+define('API_BASE_URI', 'http://api.tiresync.com/v1/oe/%s/1111-1111-1111-1111/bG9jYWxob3N0/');
 
 /**
  * Get API data
  *
  * @param string $action Action
- * @param string $url Additional parameters in query
+ * @param string $query Additional parameters in URL query
  *
  * @return string
  */
-function getUrl($action, $url = '')
+function getUrl($action, $query = '')
 {
-    $ch = curl_init(sprintf(API_BASE, $action) . $url);
+    $ch = curl_init(sprintf(API_BASE_URI, $action) . $query);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $json = curl_exec($ch);
 
